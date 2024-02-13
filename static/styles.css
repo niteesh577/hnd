@@ -1,0 +1,75 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input,
+select {
+    padding: 8px;
+}
+
+button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#saved-profile-section {
+    margin-top: 20px;
+}
+
+#saved-profile-section p {
+    margin: 8px 0;
+}
+
+#image-upload {
+    margin-bottom: 10px;
+}
+
+#image-response {
+    margin-top: 10px;
+}
+
+#calorie-info {
+    margin-top: 10px;
+}
+
+/* Add more styles as needed */
