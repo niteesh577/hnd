@@ -90,6 +90,23 @@ def calculate_calories(weight_kg, height_ft, age, sex, activity_level):
 
     return total_calories
 
+# Extract calorie data dynamically from AI response
+def extract_calories(response_text):
+    items = re.findall(r"(\d+)\. (.+?) - (\d+) calories", response_text)
+    calorie_dict = {item[1]: int(item[2]) for item in items}
+    return calorie_dict
+
+
+def plot_pie_chart(calorie_data):
+    labels = list(calorie_data.keys())
+    sizes = list(calorie_data.values())
+    explode = [0.1] + [0] * (len(labels) - 1)
+
+    fig, ax = plt.subplots()
+    ax.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', startangle=90)
+    ax.axis('equal')
+    return fig
+
 # Streamlit App
 st.set_page_config(page_title="Health Tracker", page_icon=":heart:")
 st.title("🌟 **Health Tracker!** 🌟")
@@ -161,15 +178,22 @@ if page == "Nutrition Tracker":
             # st.title("🌟 **Calorie Information** 🌟")
             # st.write(f"Reminder: Total Calories needed by your body is: {total_calories} kcal for a day")
 
-            st.subheader("Macronutrient Distribution")
-            fig, ax = plt.subplots()
-            labels = ['Carbohydrates', 'Protein', 'Fats']
-            sizes = [50, 20, 10]
-            explode = (0.1, 0, 0)
-            ax.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', startangle=90,
-                   colors=['#FF9999', '#66B2FF', '#99FF99'])
-            ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-            st.pyplot(fig)
+            # st.subheader("Macronutrient Distribution")
+            # fig, ax = plt.subplots()
+            # labels = ['Carbohydrates', 'Protein', 'Fats']
+            # sizes = [50, 20, 10]
+            # explode = (0.1, 0, 0)
+            # ax.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', startangle=90,
+            #        colors=['#FF9999', '#66B2FF', '#99FF99'])
+            # ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+            # st.pyplot(fig)
+
+            calorie_data = extract_calories(response)
+            if calorie_data:
+                st.subheader("Macronutrient Distribution")
+                st.pyplot(plot_pie_chart(calorie_data))
+            else:
+                st.error("No calorie information found in response.")
 
 elif page == "Disease Detection":
     st.header("Diagnosis Assistant")
