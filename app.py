@@ -154,18 +154,29 @@ if page == "Nutrition Tracker":
         submit = st.button("Tell me about the total calories")
 
         input_prompt = """
-        You are an expert in nutritionist where you need to see the food items from the image
-        and calculate the total calories, also provide the details of every food item with calories
-        intake in below format
+        You are an expert nutritionist tasked with analyzing the food items in the provided image. Please:
 
+        1. List the food items detected in the image along with the total calories for each food item in the following format:
         1. Item 1 - no of calories
         2. Item 2 - no of calories
+        ...
 
-        ------
-        ------
-        Finally, you can also mention whether the food is healthy or not and mention the percentage split
-        of the ratio of Carbohydrates,Protein,Fats,fibers,sugar, and other important things required in our diet
-        """
+        2. For each food item, provide the macronutrient breakdown as a percentage of the total calories. The macronutrients should include:
+        - Carbohydrates (g)
+        - Protein (g)
+        - Fats (g)
+        - Fiber (g)
+        - Sugar (g)
+        - Other relevant nutrients
+
+        3. Finally, calculate the overall macronutrient distribution for all the items in the image and present the percentages of:
+        - Carbohydrates
+        - Protein
+        - Fats
+
+       Also, please mention if the food is generally considered healthy or not based on its nutritional content.
+       """
+
 
         if submit:
             image_data = input_image_setup(uploaded_file)
