@@ -158,8 +158,8 @@ if page == "Nutrition Tracker":
 
             
 
-            st.title("🌟 **Calorie Information** 🌟")
-            st.write(f"Reminder: Total Calories needed by your body is: {total_calories} kcal")
+            # st.title("🌟 **Calorie Information** 🌟")
+            # st.write(f"Reminder: Total Calories needed by your body is: {total_calories} kcal for a day")
 
             st.subheader("Macronutrient Distribution")
             fig, ax = plt.subplots()
