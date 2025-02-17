@@ -156,8 +156,7 @@ if page == "Nutrition Tracker":
             st.title("🌟 **The Response** 🌟")
             st.write(response)
 
-            total_calories = calculate_calories(saved_profile[2], saved_profile[3], saved_profile[4], saved_profile[5],
-                                                saved_profile[6])
+            
 
             st.title("🌟 **Calorie Information** 🌟")
             st.write(f"Reminder: Total Calories needed by your body is: {total_calories} kcal")
